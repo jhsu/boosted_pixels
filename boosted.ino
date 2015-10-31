@@ -19,7 +19,7 @@ unsigned int pos_pair = 0;
 boolean forward = true;
 
 void loop() {
-  
+  clearStrip(0, NUM_PIXELS - 1);
   fillPos(pos_pair, 0 * GROUP_SIZE, GROUP_SIZE, false);
   fillPos(pos_pair, 1 * GROUP_SIZE, GROUP_SIZE, true);
   
@@ -36,11 +36,11 @@ void loop() {
   } else {
     pos_pair = pos_pair - 1;
   }
+  delay(50);
 }
 
 void fillPos(int pos, int startpoint, int group_size, boolean reversed) {
   unsigned int endpoint = startpoint + group_size -1;
-  clearStrip(startpoint, endpoint);
   if (reversed) {
     pos = endpoint - pos;
   } else {
@@ -53,6 +53,6 @@ void fillPos(int pos, int startpoint, int group_size, boolean reversed) {
 
 void clearStrip(uint8_t startpos, uint8_t endpos) {
   for( int i=startpos; i<=endpos; i++){
-    strip.setPixelColor(i, 0, 0, 0); strip.show();
+    strip.setPixelColor(i, 0, 0, 0);
   }
 }
